@@ -2,7 +2,7 @@
 
 > A component simplifies Goftino widget usage in your React application
 
-[![NPM version](https://img.shields.io/badge/npm-v0.4.0-blue)]()
+[![NPM version](https://img.shields.io/badge/npm-v0.5.0-blue)]()
 
 ## Introduction
 
@@ -35,9 +35,7 @@ const App = () => {
     <GoftinoSnippet
       goftinoKey={GOFTINO_KEY}
       onReady={() => {
-        window.Goftino.setWidget({
-          hasIcon: false,
-        });
+        window.Goftino.open();
       }}
     />
   );

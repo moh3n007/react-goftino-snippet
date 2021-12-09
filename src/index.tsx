@@ -3,18 +3,37 @@ import React, { FC, useEffect } from 'react';
 export interface IGoftinoProps {
   goftinoKey: string;
   onReady?: () => void;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 export const GoftinoSnippet: FC<IGoftinoProps> = props => {
-  const { goftinoKey, onReady } = props;
+  const { goftinoKey, onReady, onOpen, onClose } = props;
 
   useEffect(() => {
+    // an event when goftino is ready
     if (!!onReady) {
       window.addEventListener('goftino_ready', function() {
         onReady();
       });
     }
-  }, [onReady]);
+
+    // An event for when the form opens
+    if (!!onOpen) {
+      window.addEventListener('goftino_closeWidget', function() {
+        onOpen();
+      });
+    }
+
+    // An event for when the form closes
+    if (!!onClose) {
+      window.addEventListener('goftino_closeWidget', function() {
+        onClose();
+      });
+    }
+  }, [onReady, onOpen, onClose]);
+
+  useEffect(() => {}, [onClose]);
 
   useEffect(() => {
     const script = document.createElement('script');
