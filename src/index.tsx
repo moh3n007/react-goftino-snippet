@@ -20,7 +20,7 @@ export const GoftinoSnippet: FC<IGoftinoProps> = props => {
 
     // An event for when the form opens
     if (!!onOpen) {
-      window.addEventListener('goftino_closeWidget', function() {
+      window.addEventListener('goftino_openWidget', function() {
         onOpen();
       });
     }

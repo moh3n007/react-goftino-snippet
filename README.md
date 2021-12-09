@@ -2,7 +2,7 @@
 
 > A component simplifies Goftino widget usage in your React application
 
-[![NPM version](https://img.shields.io/badge/npm-v0.5.0-blue)]()
+[![NPM version](https://img.shields.io/badge/npm-v0.6.0-blue)]()
 
 ## Introduction
 
@@ -43,6 +43,59 @@ const App = () => {
 
 ReactDOM.render(<App />, document.getElementById('#app'));
 ```
+
+# Examples
+
+## Your Own Widget
+
+![](custom-widget.gif)
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { GoftinoSnippet } from '@mohsen007/react-goftino';
+const GOFTINO_KEY = 'your goftino embed key';
+
+const App = () => {
+  return (
+    <GoftinoSnippet
+      goftinoKey={GOFTINO_KEY}
+      onReady={() => {
+        window.Goftino.setWidget({
+            hasIcon: false,
+          });
+      }}
+      onClose={() => {
+          setHideButton(false);
+        }}
+    />
+    <button
+        onClick={() => {
+          window.Goftino.open();
+          setHideButton(true);
+        }}
+        style={{
+          opacity: hideButton ? 0 : 1,
+          visibility: hideButton ? 'hidden' : 'visible',
+          transition: 'all 0.15s linear',
+          color: 'white',
+          backgroundColor: 'red',
+          border: '1px solid yellow',
+          borderRadius: 8,
+          padding: 8,
+          cursor: 'pointer',
+        }}
+      >
+        My Custom Widget
+      </button>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('#app'));
+```
+##### to see full example code [Click Here](https://github.com/moh3n007/react-goftino-snippet/tree/master/example) 
+#
+#
 
 ## License
 
