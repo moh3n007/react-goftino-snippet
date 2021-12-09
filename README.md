@@ -2,7 +2,7 @@
 
 > A component simplifies Goftino widget usage in your React application
 
-[![NPM version](https://img.shields.io/badge/npm-v0.2.0-blue)]()
+[![NPM version](https://img.shields.io/badge/npm-v0.4.0-blue)]()
 
 ## Introduction
 

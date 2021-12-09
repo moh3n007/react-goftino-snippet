@@ -1,11 +1,17 @@
 {
-  "version": "0.2.0",
+  "version": "0.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
+  ],
+  "keywords": [
+    "goftino",
+    "react",
+    "online chat",
+    "embeded"
   ],
   "homepage": "https://github.com/moh3n007/react-goftino-snippet#readme",
   "engines": {
@@ -36,6 +42,7 @@
   },
   "name": "@mohsen007/react-goftino",
   "author": "Mohsen Lotfi",
+  "description": "A component enable Goftino in your React application",
   "module": "dist/react-goftino-snippet.esm.js",
   "size-limit": [
     {
