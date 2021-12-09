@@ -2,7 +2,7 @@
 
 > A component simplifies Goftino widget usage in your React application
 
-[![NPM version](https://img.shields.io/badge/npm-v0.6.0-blue)]()
+[![NPM version](https://img.shields.io/badge/npm-v0.7.0-blue)]()
 
 ## Introduction
 
@@ -44,9 +44,9 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById('#app'));
 ```
 
-# Examples
+## Examples
 
-## Your Own Widget
+### Your Own Widget
 
 ![](custom-widget.gif)
 
@@ -57,6 +57,8 @@ import { GoftinoSnippet } from '@mohsen007/react-goftino';
 const GOFTINO_KEY = 'your goftino embed key';
 
 const App = () => {
+  const [hideButton, setHideButton] = React.useState(false);
+
   return (
     <GoftinoSnippet
       goftinoKey={GOFTINO_KEY}
@@ -93,10 +95,11 @@ const App = () => {
 
 ReactDOM.render(<App />, document.getElementById('#app'));
 ```
-##### to see full example code [Click Here](https://github.com/moh3n007/react-goftino-snippet/tree/master/example) 
-#
-#
+
+##### to see full example code [Click Here](https://github.com/moh3n007/react-goftino-snippet/tree/master/example)
+
+
 
 ## License
 
-MIT
+#### MIT
