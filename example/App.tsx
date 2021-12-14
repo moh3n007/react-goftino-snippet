@@ -25,6 +25,12 @@ const App = () => {
           // when form closes you should show your custom widget
           setHideButton(false);
         }}
+        onSendMessage={message => {
+          console.log('send message', message.detail);
+        }}
+        onGetMessage={message => {
+          console.log('get message', message.detail);
+        }}
       />
       <button
         onClick={() => {
