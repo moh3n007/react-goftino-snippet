@@ -51,13 +51,6 @@ export const GoftinoSnippet: FC<IGoftinoProps> = props => {
   } = props;
 
   useEffect(() => {
-    // an event when goftino is ready
-    if (!!onReady) {
-      window.addEventListener('goftino_ready', function() {
-        onReady();
-      });
-    }
-
     // An event for when the user sent a message
     if (!!onSendMessage) {
       window.addEventListener('goftino_sendMessage', function(d: any) {
@@ -90,12 +83,21 @@ export const GoftinoSnippet: FC<IGoftinoProps> = props => {
   useEffect(() => {}, [onClose]);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = !0;
-    script.referrerPolicy = 'no-referrer-when-downgrade';
-    script.src = `https://www.goftino.com/widget/${goftinoKey}?o=goftino`;
-    document.body.appendChild(script);
+    if (!(window as any).Goftino) {
+      const script = document.createElement('script');
+      const source = 'https://www.goftino.com/widget/' + goftinoKey;
+      const localSource = localStorage.getItem('goftino_' + goftinoKey);
+      script.type = 'text/javascript';
+      script.async = !0;
+      script.referrerPolicy = 'no-referrer-when-downgrade';
+      script.src = !!localSource ? source + '?o=' + localSource : source;
+      if (!!onReady) {
+        window.addEventListener('goftino_ready', function() {
+          onReady();
+        });
+      }
+      document.body.appendChild(script);
+    }
   }, []);
 
   return <></>;

@@ -6,7 +6,7 @@ const GOFTINO_KEY = process.env.PUBLIC_GOFTINO_KEY as string;
 const App = () => {
   // a variable used for show/hide your custom widget
   const [hideButton, setHideButton] = React.useState(false);
-
+  
   return (
     <div>
       <h2>This is a simple example for create your custom widget</h2>
