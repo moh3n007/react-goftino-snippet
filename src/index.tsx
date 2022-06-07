@@ -38,9 +38,10 @@ export interface IGoftinoProps {
   onClose?: () => void;
   onSendMessage?: (message: ISendMessage) => void;
   onGetMessage?: (message: IGetMessage) => void;
+  defer?: boolean;
 }
 
-export const GoftinoSnippet: FC<IGoftinoProps> = props => {
+export const GoftinoSnippet: FC<IGoftinoProps> = (props) => {
   const {
     goftinoKey,
     onReady,
@@ -48,33 +49,34 @@ export const GoftinoSnippet: FC<IGoftinoProps> = props => {
     onClose,
     onSendMessage,
     onGetMessage,
+    defer,
   } = props;
 
   useEffect(() => {
     // An event for when the user sent a message
     if (!!onSendMessage) {
-      window.addEventListener('goftino_sendMessage', function(d: any) {
+      window.addEventListener('goftino_sendMessage', function (d: any) {
         onSendMessage(d);
       });
     }
 
     // An event for when a new message receives
     if (!!onGetMessage) {
-      window.addEventListener('goftino_getMessage', function(d: any) {
+      window.addEventListener('goftino_getMessage', function (d: any) {
         onGetMessage(d);
       });
     }
 
     // An event for when the form opens
     if (!!onOpen) {
-      window.addEventListener('goftino_openWidget', function() {
+      window.addEventListener('goftino_openWidget', function () {
         onOpen();
       });
     }
 
     // An event for when the form closes
     if (!!onClose) {
-      window.addEventListener('goftino_closeWidget', function() {
+      window.addEventListener('goftino_closeWidget', function () {
         onClose();
       });
     }
@@ -88,11 +90,15 @@ export const GoftinoSnippet: FC<IGoftinoProps> = props => {
       const source = 'https://www.goftino.com/widget/' + goftinoKey;
       const localSource = localStorage.getItem('goftino_' + goftinoKey);
       script.type = 'text/javascript';
-      script.async = !0;
       script.referrerPolicy = 'no-referrer-when-downgrade';
       script.src = !!localSource ? source + '?o=' + localSource : source;
+      if (defer) {
+        script.defer = true;
+      } else {
+        script.async = true;
+      }
       if (!!onReady) {
-        window.addEventListener('goftino_ready', function() {
+        window.addEventListener('goftino_ready', function () {
           onReady();
         });
       }
